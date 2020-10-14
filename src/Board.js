@@ -80,9 +80,13 @@
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
       var givenRow = this.rows()[rowIndex];
+      var count = 0;
       // loop through the given row
       for (var i = 0; i < givenRow.length; i++) {
         if (givenRow[i] === 1) {
+          count++;
+        }
+        if (count > 1) {
           return true;
         }
       }
@@ -110,8 +114,12 @@
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
       var board = this.rows();
+      var count = 0;
       for (var i = 0; i < board.length; i++) {
         if (board[i][colIndex] === 1) {
+          count++;
+        }
+        if (count > 1) {
           return true;
         }
       }
