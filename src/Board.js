@@ -143,32 +143,32 @@
     // --------------------------------------------------------------
     //
 
-    helperHasMajorDiagonalConflictAt: function(i, j) {
+    helperHasMajorDiagonalConflictAt: function(row, col) {
       var board = this.rows();
       var count = 0;
-      while (i < board.length && j < board.length) {
-        if (board[i][j] === 1) {
+      while (row < board.length && col < board.length) {
+        if (board[row][col] === 1) {
           count++;
         }
         if (count > 1) {
           return true;
         }
-        i++;
-        j++;
+        row++;
+        col++;
       }
       return false;
     },
 
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      var i = 0;
-      var j = majorDiagonalColumnIndexAtFirstRow;
-      if (this.helperHasMajorDiagonalConflictAt(i, j)) {
+      var row = 0;
+      var col = majorDiagonalColumnIndexAtFirstRow;
+      if (this.helperHasMajorDiagonalConflictAt(row, col)) {
         return true;
       }
-      j = 0;
-      i = majorDiagonalColumnIndexAtFirstRow;
-      if (this.helperHasMajorDiagonalConflictAt(i, j)) {
+      col = 0;
+      row = majorDiagonalColumnIndexAtFirstRow;
+      if (this.helperHasMajorDiagonalConflictAt(row, col)) {
         return true;
       }
       return false;
@@ -191,31 +191,31 @@
     // --------------------------------------------------------------
     //
 
-    helperHasMinorDiagonalConflictAt: function(i, j) {
+    helperHasMinorDiagonalConflictAt: function(row, col) {
       var board = this.rows();
       var count = 0;
-      while (i > 0 && j > 0) {
-        if (board[i][j] === 1) {
+      while (row < board.length && col >= 0) {
+        if (board[row][col] === 1) {
           count++;
         }
         if (count > 1) {
           return true;
         }
-        i--;
-        j--;
+        row++;
+        col--;
       }
       return false;
     },
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      var i = 0;
-      var j = minorDiagonalColumnIndexAtFirstRow;
-      if (this.helperHasMinorDiagonalConflictAt(i, j)) {
+      var row = 0;
+      var col = minorDiagonalColumnIndexAtFirstRow;
+      if (this.helperHasMinorDiagonalConflictAt(row, col)) {
         return true;
       }
-      j = 0;
-      i = minorDiagonalColumnIndexAtFirstRow;
-      if (this.helperHasMinorDiagonalConflictAt(i, j)) {
+      col = this.rows().length - 1;
+      row = minorDiagonalColumnIndexAtFirstRow;
+      if (this.helperHasMinorDiagonalConflictAt(row, col)) {
         return true;
       }
       return false;
