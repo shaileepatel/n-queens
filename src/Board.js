@@ -146,7 +146,7 @@
     helperHasMajorDiagonalConflictAt: function(row, col) {
       var board = this.rows();
       var count = 0;
-      while (row < board.length && col < board.length) {
+      while (row < board.length && row >= 0 && col < board.length) {
         if (board[row][col] === 1) {
           count++;
         }
